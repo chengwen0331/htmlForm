@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAKURA RESTAURANT</title>
+    <link rel="shortcut icon" type="image/png" href="image/restaurant_img.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+        }
+        header{
+            position: absolute;
+            width: 100%;
+            top:0;
+            right:0;
+            z-index:1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 10%;
+        }
+        .box{
+            height:30px;
+            display: flex;
+            cursor: pointer;
+            padding: 10px 20px;
+            background: rgb(153, 46, 46);
+            border-radius: 30px;
+            align-items: center;
+        }
+        .box:hover input{
+            width:300px;
+        }
+        .box input{
+            width:0;
+            outline:none;
+            border:none;
+            font-weight: 600;
+            transition: 0.8s;
+            background: transparent;
+            color: black;
+        }
+        .box input::placeholder{
+            color:white;
+        }
+        .navmenu{
+            display: flex;
+        }
+        .navmenu a{
+            padding: 10px 20px;
+            color:black;
+            text-transform: capitalize;
+            font-weight: 600;
+            transition: all 0.42s ease;
+            font-size: 18px;
+        }
+        .navmenu a:hover{
+            color: rgb(255, 90, 90);
+            text-decoration: underline;
+        }
+        section{
+            padding: 60px 12%;
+        }
+        .home{
+            width: 100%;
+            height:100vh;
+            background-image: url("image/background.png");
+            background-color:blanchedalmond;
+            display: grid;
+            background-position: center;
+            background-size: cover;
+            grid-template-columns: repeat(2,1fr);
+            align-items: center;
+            gap:2rem;
+        }
+        .home-img img{
+            max-width: 100%;
+            width:90%;
+            height:auto;
+        }
+        .home-text h1{
+            color: black;
+            font-weight: 600;
+            font-size: 50px;
+            line-height: 1.2;
+            margin:8px 0;
+            font-family: 'Anton', sans-serif;
+            letter-spacing: 1px;
+        }
+        .home-text h1 span{
+            color:rgb(153, 46, 46);
+        }
+        .home-text h4{
+            color: black;
+            font-size:25px;
+            font-weight: 500;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+            font-family: 'Anton', sans-serif;
+        }
+        .home-text h3{
+            color: black;
+            font-size: 18px;
+            line-height: 25px;
+            font-weight: 500;
+            margin-bottom: 40px;
+            font-family: 'Anton', sans-serif;
+        }
+        .main-btn{
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .main-btn .btn{
+            color:#fff;
+            font-size:15px;
+            text-transform: capitalize;
+            background-color: rgb(153, 46, 46);
+            padding:18px 30px;
+            transition: all 0.42s ease;
+            font-weight: 600;
+        }
+        .main-btn .btn:hover{
+            background-color: black;           
+        }
+        footer{
+            background-color: black;
+            color: white;
+        }
+        .footer_info{
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+            padding: 50px 0;
+        }
+        .footer_info .footer_width{
+            padding: 0 70px;
+        }
+        .footer_info h2{
+            margin-bottom: 20px;
+        }
+        .about .operation, .contact{
+            width: 40%;
+        }
+        .social_media{
+            margin-top:30px;
+        }
+        .social_media ul{
+            display: flex;
+        }
+        .social_media ul li i{
+            display: inline-block;
+            margin-right: 50px;
+            width: 50px;
+            height: 50px;
+            padding-top: 12px;
+            background-color: transparent;
+            border: 1px solid #fff;
+            text-align: center;
+        }
+        .contact ul li,
+        .operation ul li{
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .contact ul li span, 
+        .operation ul li span{
+            margin-right: 15px;
+        }
+        .copy-right{
+            padding:15px 0;
+            text-align: center;
+            background-color: #666;
+        }
+        @media(max-width:945px){
+            header{
+                padding: 20px 3%;
+                transition: 0.3s;
+            }
+        }
+        @media(max-width:1140px){
+            .home{
+                grid-template-columns: 1fr;
+                height: 100%;
+            }
+        }
+        @media screen and (max-width:992px){
+            .contact .operation{
+                width:35%;
+            }
+        }
+        @media screen and (max-width:767px){
+            .contact .operation{
+                width:100%;
+                margin-bottom: 30px;
+            }
+            .footer_info{
+                flex-direction: column;
+            }
+        }
+        ::-webkit-scrollbar{
+            width:15px;
+            background: pink;
+        }
+        ::-webkit-scrollbar-track{
+            background: #ffe6b4;
+        }
+        ::-webkit-scrollbar-thumb{
+            background: linear-gradient(#e92626, #ffb522);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="image/restaurant_logo(light).png" class="logo" alt="logo" width="200px" height="150px"> 
+        <ul class="navmenu">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="#about_info">ABOUT US</a></li>
+            <li><a href="#">MENU</a></li>
+            <li><a href="#contact_info">CONTACT</a></li>
+        </ul> 
+        <div class="box">
+            <input type="text" placeholder="SEARCH...">
+            <i class="fa-solid fa-magnifying-glass" style="font-size: 18px; color: #fff;"></i>
+        </div>    
+    </header>
+    <section class="home">
+        <div class="home-text">
+            <h1>Welcome to <br><span>Sakura Restaurant</span></h1>
+            <h4>We serve the taste you love &#128420;</h4>
+            <h3>You can enjoy delicious and fresh food anytime!</h3>
+            <div class="main-btn">
+                <a href="booking.html" class="btn">BOOK NOW</a>
+            </div>
+        </div>
+        <div class="home-img">
+            <img src="image/food_img1.png" alt="homepage image">
+        </div>
+    </section>
+    <footer>
+        <div class="footer_info">
+            <div class="footer_width about" id="about_info">
+                <h2>About Us</h2>
+                <p>
+                    Sakura Restaurant is a good choice and everyone<br> 
+                    can enjoy tasty food here. Better food, Better mood,<br> 
+                    the food here tastes like paradise. You also have a <br>
+                    chance to customize your meals. Please come and try it.<br> 
+                </p>
+                <div class="social_media">
+                    <ul>
+                        <li>
+                            <i class="fa-brands fa-facebook-f" style="font-size: 20px;"></i>
+                        </li>
+                        <li>
+                            <i class="fa-brands fa-instagram" style="font-size: 20px;"></i>
+                        </li>
+                        <li>
+                            <i class="fa-brands fa-square-twitter" style="font-size: 20px;"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer_width operation">
+                <h2>Operation Hours</h2>
+                <ul>
+                    <li>
+                        <span><i class="fa-regular fa-clock"></i></span>
+                        <p>
+                            9:00 a.m. to 10:00 p.m.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer_width contact" id="contact_info">
+                <h2>Contact</h2>
+                <ul>
+                    <li>
+                        <span><i class="fa-regular fa-envelope"></i></span>
+                        <p>
+                            sakuRa@gmail.com
+                        </p>
+                    </li>
+                    <li>
+                        <span><ion-icon name="call-outline"></ion-icon></span>
+                        <p>
+                            +60-182129139
+                        </p>
+                    </li>
+                    <li>
+                        <span><ion-icon name="location-outline"></ion-icon></span>
+                        <p>
+                            8, Lorong Ciku 5, Taman Mas Baru, 30100 Ipoh, Perak
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="copy-right">
+            <p>
+                @ COPYRIGHT 2023<br>
+                DESIGNED BY SAKURA RESTAURANT
+            </p>
+        </div>
+    </footer>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

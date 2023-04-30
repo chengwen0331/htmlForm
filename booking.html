@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>BOOKING FORM</title>
+    <link rel="shortcut icon" type="image/png" href="image/form_icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        body{
+            width:100%;
+            height:100vh;
+        }
+        .container{
+            min-height: 100vh;
+            background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("image/restaurant_bg.jpg") center/cover no-repeat;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            padding: 0px 120px;
+        }
+        .contact-box{
+            position: relative;
+            max-width: 1300px;
+            background: blanchedalmond;
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.19);
+        }
+        .left{
+            height:100%;
+            background: url("image/food_img.jpg") no-repeat center;
+            background-size: cover;
+        }
+        .right{
+            padding: 25px 40px;
+        }
+        .icon{
+            font-size: 40px;
+            position: relative;
+            right:-250px;
+            color:black;
+        }
+        .logo{
+            width: 200px;
+            height:150px;
+            cursor:pointer;
+        }
+        h1{
+            position: relative;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        h1:after{
+            content:"";
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            height: 4px;
+            width: 50px;
+            border-radius: 2px;
+            background-color: #cc2e2e;
+        }
+        .field{
+
+            position: relative;
+            margin-bottom: 1.2em;
+        }
+        .input-field{
+            width: 100%;
+            outline:0;
+            border:2px solid black;
+            border-radius:3px;
+            padding:10px;
+            padding-left: 60px;
+            background: transparent;
+            font-size: 2em;
+            color:black;
+        }
+        .input-field::placeholder{
+            color:black;
+        }
+        .icon1{
+            position: absolute;
+            left: 0;
+            top:0;
+            width:60px;
+            height:100%;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+            font-size:1.6em;
+        }
+        .input-field:focus{          
+            color:black;
+            border: 2px solid blue;
+        }
+        .input-field:focus ~ .icon1{
+            color: black;
+        }
+        .field1{
+            text-align: left;
+            padding-left: 60px;
+            width: 100%;
+            outline:0;
+            border:2px solid black;
+            border-radius:3px;
+            background: transparent;
+            font-size: 2em;
+            color:black;
+            margin-bottom: 1.2em;
+        }
+        .area{
+            min-height: 40px;
+        }
+        .btn{
+            width:30%;
+            padding: 0.7rem 0.5rem;
+            font-size: 1.5rem;
+            background-color: #2ecc71;
+            cursor: pointer;
+            outline: none;
+            border: none;
+            border-radius: 15px;
+            transition: .3s;
+            color:#fff;
+            display: inline-block;
+            font-weight: 600;
+        }
+        .btn:hover{
+            background-color: #27ae60;
+        }
+        .popup{
+            width:400px;
+            background: #fff;
+            border-radius: 6px;
+            position: absolute;
+            top:0;
+            left:50%;
+            transform: translate(-50%,-50%) scale(0.1);
+            text-align: center;
+            padding: 0 30px 30px;
+            color:#333;
+            visibility: hidden;
+            transition: transform 0.4s, top 0.4s;
+        }
+        .rating{
+            position: relative;
+            display: flex;
+            flex-direction: row-reverse;
+            padding: 30px 40px;
+            border:2px solid black;
+            border-radius:3px;
+            background: transparent;
+            gap: 30px;
+
+        }
+        .rating p{
+            font-size: 2em;
+            color:black;
+        }
+        .rating input{
+            position: relative;
+            width:40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance:none;
+        }
+        .rating input::before{
+            content:'\f005';
+            position: absolute;
+            font-family: fontAwesome;
+            font-size: 34px;
+            color:#111;
+            transition: 0.5s;
+        }
+        .rating input:hover ~ input::before,
+        .rating input:hover::before,
+        .rating input:checked ~ input::before,
+        .rating input:checked::before{
+            color:#ff9933;
+        }
+        .open-popup{
+            visibility: visible;
+            top:50%;
+            transform: translate(-50%,-50%) scale(1);
+        }
+        .popup img{
+            width: 100px;
+            margin-top: -60x;
+            border-radius: 50%;
+        }
+        .popup h2{
+            font-size: 38px;
+            font-weight: 500;
+            margin:30px 0 10px;
+        }
+        .popup p{
+            font-weight:600;
+        }
+        .popup button{
+            width:100%;
+            margin-top: 50px;
+            padding: 10px 0;
+            background: #6fd649;
+            color: #fff;
+            border:0;
+            outline: none;
+            font-size: 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        @media screen and (max-width:880px){
+            .contact-box{
+                grid-template-columns: 1fr;
+            }
+            .left{
+                height:200px;
+            }
+        }
+        .scroll-bg{
+            width:650px;
+            margin: auto;
+        }
+        .scroll-div{
+            width:650px;
+            height:500px;
+            overflow: hidden;
+            overflow-y: scroll;
+        }
+        .scroll-object{
+            padding: 20px;
+        }
+        ::-webkit-scrollbar{
+            width:15px;
+            background: pink;
+        }
+        ::-webkit-scrollbar-track{
+            background: #d1e5ff;
+        }
+        ::-webkit-scrollbar-thumb{
+            background: linear-gradient(#642bff, #ff22e6);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="contact-box">
+            <div class="left"></div>
+            <div class="right">
+                <div class="scroll-bg">
+                    <div class="scroll-div">
+                        <div class="scroll-object">
+                            <a href="index.html" class="icon"> 
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </a><br>
+                            <img src="image/restaurant_logo(light).png" class="logo" alt="restaurant logo">
+                            <h1>BOOKING FORM</h1>
+                            <form action="" method="post">
+                                <div class="field">                              
+                                    <input type="text" class="input-field" placeholder="First Name" autocomplete="off" required>
+                                    <div class="icon1">
+                                        <i class="fa-solid fa-address-card" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input-field" placeholder="Last Name" autocomplete="off" required>
+                                    <div class="icon1">
+                                        <i class="fa-solid fa-address-card" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <input type="email" class="input-field" placeholder="Email" autocomplete="off" required>
+                                    <div class="icon1">
+                                        <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <input type="tel" class="input-field" placeholder="Phone Number (xxx-xxxxxxx)" pattern="[0-9]{3}-[0-9]{7}" size="12"
+                                    maxlength="11" autocomplete="off" required>
+                                    <div class="icon1">
+                                        <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <input type="date" class="input-field" placeholder="Date" min="2023-04-24" autocomplete="off" required>
+                                </div>
+                                <div class="field">
+                                    <input type="time" class="input-field" placeholder="Time" min="09:00" max="22:00" autocomplete="off" required>
+                                </div>
+                                <div class="field">
+                                    <select placeholder="Pax" class="input-field" autocomplete="off" required>
+                                        <option value="1">Pax: 1</option>
+                                        <option value="2">Pax: 2</option>
+                                        <option value="3">Pax: 3</option>
+                                        <option value="4">Pax: 4</option>
+                                        <option value="4">Pax: 5</option>
+                                    </select>
+                                    <div class="icon1">
+                                        <i class="fa-solid fa-user" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <select placeholder="Reservation Type" class="input-field" autocomplete="off">
+                                        <option value="type">Reservation Type</option>
+                                        <option value="dinner">Dinner</option>
+                                        <option value="birthday/anniversary">Birthday/Anniversary</option>
+                                        <option value="engagament party">Engagement Party</option>
+                                        <option value="private">Private</option>
+                                    </select>
+                                    <div class="icon1">
+                                        <ion-icon name="list-outline"></ion-icon>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <select placeholder="Number of Table" class="input-field" autocomplete="off">
+                                        <option value="1">Number of Table: 1</option>
+                                        <option value="2">Number of Table: 2</option>
+                                        <option value="3">Number of Table: 3</option>
+                                        <option value="4">Number of Table: 4</option>
+                                    </select>
+                                    <div class="icon1">
+                                        <i class="fa-solid fa-utensils" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <textarea class="input-field area" placeholder="Additional Request" autocomplete="off"></textarea>
+                                    <div class="icon1">
+                                        <i class="fa-solid fa-pencil" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="field1">
+                                    <p>Have you been to our restaurant before?</p>
+                                    <input type = "radio" name = "subscribe" value ="yes" >Yes
+                                    <input type = "radio" name = "subscribe" value = "no" checked>No
+                                </div>
+                                <div class="rating">
+                                    <input type="radio" name="rating" id="r1">
+                                    <label for="r1"></label>
+                                    <input type="radio" name="rating" id="r2">
+                                    <label for="r2"></label>
+                                    <input type="radio" name="rating" id="r3">
+                                    <label for="r3"></label>
+                                    <input type="radio" name="rating" id="r4">
+                                    <label for="r4"></label>
+                                    <input type="radio" name="rating" id="r5">
+                                    <label for="r5"></label>
+                                    <p>Please submit a rating for the online booking form functionality</p>   
+                                </div><br>
+                                <input type="submit" value="SUBMIT" class="btn" onclick="openPopup()"> 
+                                <!--<div class="popup" id="popup">
+                                    <img src="image/tick_icon.png">
+                                    <h2>Thank you!</h2>
+                                    <p>Your booking has been successfully submitted.Thanks!</p>
+                                    <button type="button" onclick="closePopup()">OK</button>
+                                </div>-->
+                                <input type="reset" value="RESET" class="btn">  
+                            </form>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" ></script>
+    <!--<script>
+        let popup = document.getElementById("popup");
+        function openPopup(){
+            popup.classList.add("open-popup");
+        }
+        function closePopup(){
+            popup.classList.remove("open-popup");
+        }
+    </script>-->
+</body>
+</html>
